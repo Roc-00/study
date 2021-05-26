@@ -1,0 +1,21 @@
+.lift-nav{
+    position: fixed;
+    top: 100px;
+    left: 30px;
+    display: none;
+}
+.lift-nav li{
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+    padding: 10px 10px;
+    margin-bottom: 10px;
+    background: skyblue;
+    cursor: pointer;
+}
+
+.lift-nav li.current{
+    background: tomato;
+}

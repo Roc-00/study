@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+        <div class="top"><img src="" alt=""></div>
+        <div class="time"></div>
+    </div>
+    <script>
+        var out = document.querySelector('.time');
+
+        var timeL = setInterval("clock()", 1000);
+
+        function clock() {
+            var endT = new Date(2021, 4, 24, 19, 30);
+            var startT = new Date();
+            var cha = parseInt((endT - startT) / 1000);
+            console.log(cha);
+            d = parseInt(cha / (24 * 60 * 60)); //天
+            // console.log(d);
+            h = parseInt(cha / 60 / 60 % 24) //小时
+            m = parseInt(cha / 60 % 60); //分钟
+            s = parseInt(cha % 60); //秒
+            out.innerHTML = 'day:' + d + 'h:' + h + 'm:' + m + 's:' + s;
+        }
+    </script>
+</body>
+
+</html>

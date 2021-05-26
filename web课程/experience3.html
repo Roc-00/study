@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            height: 500px;
+            width: 385px;
+            background-color: red;
+            margin: 0 auto;
+        }
+
+        .time {
+            width: 70%;
+            margin: 0 auto;
+        }
+
+        .time div {
+            height: 50px;
+            width: 50px;
+            background-color: black;
+            float: left;
+            margin: 0 8px;
+            color: white;
+            font-size: 30px;
+            text-align: center;
+            border-radius: 10px;
+            line-height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="float: left;margin: 100px;">
+        <div>请输入年：<input type="text" class="setY"></div>
+        <div>请输入月：<input type="text" class="setM"></div>
+        <div>请输入日：<input type="text" class="setD"></div>
+        <div>请输入小时：<input type="text" class="setH"></div>
+        <div>请输入分钟：<input type="text" class="setMin"></div>
+        <button type="button" class="sb">生成</button>
+    </div>
+    <div class="box">
+        <div class="top"><img src="./img/京东秒杀.png" alt=""></div>
+        <div class="time">
+            <div class="day"></div>
+            <div class="hour"></div>
+            <div class="min"></div>
+            <div class="second"></div>
+        </div>
+    </div>
+    <script>
+        var out = document.querySelector('.time');
+
+        document.querySelector(".sb").onclick = function () {
+            var endT = new Date(document.querySelector('.setY').value, document.querySelector('.setM').value - 1,
+                document.querySelector('.setD').value, document.querySelector('.setH').value, document
+                .querySelector('.setMin').value);
+
+            var timeL = setInterval(function clock() {
+                var startT = new Date();
+                var cha = parseInt((endT - startT) / 1000);
+                if (cha <= 0) {
+                    clearInterval(timeL);
+                }
+                var d = parseInt(cha / (24 * 60 * 60)); //天
+                var h = parseInt(cha / 60 / 60 % 24) //小时
+                var m = parseInt(cha / 60 % 60); //分钟
+                var s = parseInt(cha % 60); //秒
+
+                document.querySelector('.day').innerHTML = ("0" + d).slice(-2);
+                document.querySelector('.hour').innerHTML = ("0" + h).slice(-2);
+                document.querySelector('.min').innerHTML = ("0" + m).slice(-2);
+                document.querySelector('.second').innerHTML = ("0" + s).slice(-2);
+            }, 1000);
+        }
+    </script>
+</body>
+
+</html>
